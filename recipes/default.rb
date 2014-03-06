@@ -18,4 +18,30 @@
 # limitations under the License.
 #
 
-# Install/configure something here
+package 'postfix'
+
+package 'libsasl2-2'
+
+package 'libsasl2-modules'
+
+package 'ca-certificates'
+
+service 'postfix' do
+  action [:enable, :start]
+end
+
+template '/etc/postfix/main.cf' do
+  source 'main.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :restart, 'service[postfix]'
+end
+
+template '/etc/postfix/master.cf' do
+  source 'master.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :restart, 'service[postfix]'
+end

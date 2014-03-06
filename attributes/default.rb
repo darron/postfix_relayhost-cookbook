@@ -18,4 +18,12 @@
 # limitations under the License.
 #
 
-# Set meaningful node attributes here
+default['postfix']['sasl']['smtp_sasl_user_name'] = 'username-goes-here'
+default['postfix']['sasl']['smtp_sasl_passwd']    = 'password'
+default['postfix']['main']['relayhost'] = 'relayhost.example.com'
+default['postfix']['main']['smtp_sasl_auth_enable'] = 'yes'
+default['postfix']['main']['smtp_sasl_security_options'] = 'noanonymous'
+default['postfix']['domain_name'] = 'example.com'
+default['postfix']['my_networks'] = '127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128'
+default['postfix']['smtp_use_tls'] = 'no'
+default['postfix']['smtp_tls_CAfile'] = '/etc/postfix/cacert.pem'
